@@ -84,17 +84,17 @@ return match
         const show = document.querySelectorAll('.show');
         let title = document.querySelector('.title');
         if(letter.length === show.length){
-            overlay.className = "win";
-            title.textContent = "wow you won, you probably have big IQ";
-            overlay.style.display ="flex";
-            btnReset.style.display = "none";
+            overlay.className = 'win';
+            title.textContent = 'wow you won, you probably have big IQ';
+            overlay.style.display ='flex';
+            btnReset.style.display = 'none';
 
         }
         else if(missed > 4){
-            overlay.className = "lost";
-            title.textContent = "oops you lost";
-            overlay.style.display ="flex";
-            btnReset.style.display = "none";
+            overlay.className = 'lost';
+            title.textContent = 'oops you lost';
+            overlay.style.display ='flex';
+            btnReset.style.display = 'none';
         }
 
 
