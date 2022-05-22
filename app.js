@@ -4,6 +4,7 @@ const btnReset = document.querySelector(".btn__reset");
 const phraseUl = document.querySelector("#phrase ul");
 const phrases = ['Alex is a pro at coding', 'clouds on the top of icloud', 'not enough memory', 'grrrrrrrrrrr', 'aaaaaaaa'];
 const phraseArray = getRandomPhraseAsArray(phrases);
+const ul = document.querySelector('ul');
 
 
 btnReset.addEventListener('click', (e) => {
@@ -79,14 +80,13 @@ return match
     }  
 
 
-
-
-    function reloadGame(){
-        btnReset.addEventListener('click', () =>{
-            ul.style.display = 'none';
+    
+     function reloadGame(){
+         btnReset.addEventListener('click', (e) =>{
+             ul.style.display = 'none';
             location.reload();
 
-        });
+         });
 
     }
 
