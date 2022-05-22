@@ -47,13 +47,29 @@ function addPhraseToDisplay (arr){
 
 addPhraseToDisplay(phraseArray);
 
+qwerty.addEventListener('click', (e) => {
+    let btn = e.target;
+     if(btn.tagName === 'BUTTON'){
+         btn.disabled = true;
+         btn.className = "chosen";
+         let letterFound = checkLetter(btn);
+     
+     if(letterFound === null){
+         const lost = document.querySelectorAll(".tries img")[missed];
+         lost.src = "images/lostHeart.png";
+         missed++;
+         }
+     }
+     checkWin();
+ });
+
 function checkLetter (button){
-let letter = document.querySelectorAll(".letter");
 let match = null;
 let selectLi = document.querySelectorAll("li");
 for(let i=0; i < selectLi.length; i++){
 if(button.textContent === selectLi[i].textContent.toLowerCase()){
     selectLi[i].classList.add('show');
+    selectLi[i].style.transition = "all .5s ease";
     match = button .textContent;
     }
 
@@ -63,21 +79,16 @@ return match
     }  
 
 
-    qwerty.addEventListener('click', (e) => {
-       let btn = e.target;
-        if(btn.tagName === 'BUTTON'){
-            btn.disabled = true;
-            btn.className = "chosen";
-            let letterFound = checkLetter(btn);
-        
-        if(letterFound === null){
-            const lost = document.querySelectorAll(".tries img")[missed];
-            lost.src = "images/lostHeart.png";
-            missed++;
-            }
-        }
-        checkWin();
-    });
+
+
+    function reloadGame(){
+        btnReset.addEventListener('click', () =>{
+            ul.style.display = 'none';
+            location.reload();
+
+        });
+
+    }
 
     function checkWin (){
         const letter = document.querySelectorAll('.letter');
@@ -91,12 +102,12 @@ return match
 
         }
         else if(missed > 4){
-            overlay.className = 'lost';
+            overlay.className = 'lose';
             title.textContent = 'oops you lost';
             overlay.style.display ='flex';
             btnReset.style.display = 'none';
         }
-
+        reloadGame();
 
     }
 

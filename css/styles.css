@@ -4,8 +4,8 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #4a8abf;
+  --color-lose: #67b9cd;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -135,7 +135,35 @@ button {
 }
 
 .title {
-  color: rgb(212, 54, 54);
+  color: rgb(0, 248, 91);
+}
+.lose h2{
+  color:#ff0800;
+}
+.win h2{
+  color: #64ec76;
+
+}
+/* .keyrow */
+/* { */
+        /* opacity:0.5; */
+/* } */
+/* .keyrow:hover */
+/* { */
+        /* opacity:1; */
+/* } */
+
+button {
+  margin: 6px;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  color: var(--color-keys);
+  font-size: var(--font-size-medium);
+  background-color: var(--color-keys-light);
+  border-radius: 5px;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
 
 .start {
