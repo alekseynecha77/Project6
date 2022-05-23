@@ -83,13 +83,18 @@ return match
 
     
     // RESET GAME after win or loss
+  
+
 function resetGame () {
     const buttons = document.getElementsByTagName("button");
     const li = document.querySelectorAll("ul li");
     overlay.className = "start";
     listItem.innerHTML = "";
-    missed = 0;
-  
+     missed = 0;
+
+
+
+
     /* RESETS THE HEARTS */
     for (let i = 0; i < tries.length; i++) {
       tries[i].firstElementChild.src = "images/liveHeart.png";
@@ -110,8 +115,9 @@ function resetGame () {
         //Add new phrase as li items to screen
         const phraseArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(phraseArray);
-      }
-            
+        
+      } 
+  
     
 function checkWin (){
     const show = document.getElementsByClassName("show");
@@ -134,5 +140,3 @@ function checkWin (){
     }
 
     
-
-
