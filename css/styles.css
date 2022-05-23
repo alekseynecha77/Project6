@@ -7,9 +7,9 @@
   --color-win: #4a8abf;
   --color-lose: #67b9cd;
   --color-start: #5b85b7;
-  --color-neutral: #445069;
+  --color-neutral: #5ca8c2;
   --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
+  --color-keys: #000000;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
@@ -108,7 +108,10 @@ button {
   background: var(--color-neutral);
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #b12323;
+}
+.chosen:hover{
+  background-color: #64ec76;
 }
 
 .btn__reset {

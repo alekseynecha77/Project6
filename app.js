@@ -68,7 +68,7 @@ function checkLetter(button) {
   for (let i = 0; i < selectLi.length; i++) {
     if (button.textContent === selectLi[i].textContent.toLowerCase()) {
       selectLi[i].classList.add("show");
-      selectLi[i].style.transition = "all .5s ease";
+      selectLi[i].style.transition = "all 1.5s ease-out ";
       match = button.textContent;
     }
   }
