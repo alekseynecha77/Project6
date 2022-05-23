@@ -6,7 +6,6 @@ const phrases = ['Alex is a pro at coding', 'clouds on the top of icloud', 'not 
 const phraseArray = getRandomPhraseAsArray(phrases);
 const ul = document.querySelector('ul');
 
-
 btnReset.addEventListener('click', (e) => {
     e.preventDefault();
     overlay.style.display = "none"
@@ -85,20 +84,34 @@ return match
          btnReset.addEventListener('click', (e) =>{
              ul.style.display = 'none';
             location.reload();
+            
+       
 
          });
 
     }
 
+    function restartGame(){
+        const restartButton = document.querySelector('.restart');
+
+       restartButton.addEventListener('click', (e) => {
+
+        window.location.reload();
+        return false;
+
+    });
+    }
+    
     function checkWin (){
         const letter = document.querySelectorAll('.letter');
         const show = document.querySelectorAll('.show');
         let title = document.querySelector('.title');
         if(letter.length === show.length){
-            overlay.className = 'win';
-            title.textContent = 'wow you won, you probably have big IQ';
+            ovlerlay.className = 'win';
+            tite.textContent = 'wow you won, you probably have big IQ';
             overlay.style.display ='flex';
             btnReset.style.display = 'none';
+            restartGame();
 
         }
         else if(missed > 4){
@@ -106,8 +119,10 @@ return match
             title.textContent = 'oops you lost';
             overlay.style.display ='flex';
             btnReset.style.display = 'none';
-        }
-        reloadGame();
+            restartGame();
 
+        }
+       
+        reloadGame();
     }
 
