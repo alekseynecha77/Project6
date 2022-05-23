@@ -2,7 +2,7 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const btnReset = document.querySelector(".btn__reset");
 const phraseUl = document.querySelector("#phrase ul");
-const phrases = ['Alex is a pro at coding', 'clouds on the top of icloud', 'not enough memory', 'grrrrrrrrrrr', 'aaaaaaaa'];
+const phrases = ['Alex is a pro at coding', 'clouds on the top of icloud', 'not enough memory', 'in my phone', 'another time my phone said'];
 const phraseArray = getRandomPhraseAsArray(phrases);
 const ul = document.querySelector('ul');
 
@@ -108,10 +108,9 @@ return match
         let title = document.querySelector('.title');
         if(letter.length === show.length){
             ovlerlay.className = 'win';
-            tite.textContent = 'wow you won, you probably have big IQ';
+            title.textContent = 'wow you won, you probably have big IQ';
             overlay.style.display ='flex';
             btnReset.style.display = 'none';
-            restartGame();
 
         }
         else if(missed > 4){
@@ -119,10 +118,11 @@ return match
             title.textContent = 'oops you lost';
             overlay.style.display ='flex';
             btnReset.style.display = 'none';
-            restartGame();
 
         }
-       
-        reloadGame();
-    }
+                reloadGame();
+                restartGame();
+
+            }
+
 
