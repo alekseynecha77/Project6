@@ -89,7 +89,7 @@ function resetGame () {
     const buttons = document.getElementsByTagName("button");
     const li = document.querySelectorAll("ul li");
     overlay.className = "start";
-    listItem.innerHTML = "";
+    li.innerHTML = " ";
      missed = 0;
 
 
