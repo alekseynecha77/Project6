@@ -6,6 +6,8 @@ const phrases = ['Alex is a pro at coding', 'clouds on the top of icloud', 'not 
 const phraseArray = getRandomPhraseAsArray(phrases);
 const ul = document.querySelector('ul');
 
+const tries = document.querySelectorAll("li.tries");
+
 btnReset.addEventListener('click', (e) => {
     e.preventDefault();
     overlay.style.display = "none"
@@ -80,60 +82,57 @@ return match
 
 
     
-    
+    // RESET GAME after win or loss
+function resetGame () {
+    const buttons = document.getElementsByTagName("button");
+    const li = document.querySelectorAll("ul li");
+    overlay.className = "start";
+    listItem.innerHTML = "";
+    missed = 0;
+  
+    /* RESETS THE HEARTS */
+    for (let i = 0; i < tries.length; i++) {
+      tries[i].firstElementChild.src = "images/liveHeart.png";
+    }
+  
+    /* RESETS LI */
+    for (let i = 0; i < li.length; i++) {
+      li[i].className = "";
+      li[i].textContent = "";
+    }
+  
+    /* RESETS THE CHOSEN KEYBOARD KEYS */
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].className = "";
+      buttons[i].disabled = false;
+    } 
+      
+        //Add new phrase as li items to screen
+        const phraseArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(phraseArray);
+      }
             
     
-    function checkWin (){
-        const letter = document.querySelectorAll('.letter');
-        const show = document.querySelectorAll('.show');
-        let title = document.querySelector('.title');
-        if(letter.length === show.length){
-            disableButtons();
-        setTimeout(function () {    
-            overlay.className = 'win';
-            overlay.style.display = 'flex';
-            title.innerHTML = 'YOU WIN!';
-            startGame.innerHTML = 'Replay?';
-        }, 800);
-
-    } else if(missed > 4){
-            disableButtons();
-            setTimeout(function () {
-                overlay.className = 'lose';
-                overlay.style.display = 'flex';
-                title.innerHTML = 'YOU LOSE!';
-                start.innerHTML = 'Replay?';
-             }, 800);
-        }
+function checkWin (){
+    const show = document.getElementsByClassName("show");
+    const letters = document.getElementsByClassName("letter");
+    if (letters.length === show.length) {
+    overlay.classList.add("win");
+    overlay.style.display = "flex";
+    overlay.children[0].textContent = "SUCCESS!";
+    overlay.children[1].textContent = "Restart?";
+    resetGame();
+  } else if (missed >= 5) {
+    overlay.classList.add("lose");
+    overlay.style.display = "flex";
+    overlay.children[0].textContent = "FAILURE!";
+    overlay.children[1].textContent = "Restart?";
+    resetGame();
+  
+}
+  
     }
 
     
-function disableButtons () {
-    let buttons = document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].disabled = true;
-    }
-}
 
-// RESET GAME after win or loss
-function resetGame () {
-    missed = 0;
-    phraseArray = ''; /*Removing the previous phrase*/
-    phraseArray = getRandomPhraseAsArray(phrases); /*Choosing a new phrase*/
-    // Remove list items of the last phrase from display
-    const removeLi = document.querySelectorAll('ul li');
-    for (let i = 0; i < removeLi.length; i++) {
-        removeLi[i].remove();
-    }
-    // Reset all buttons
-    let buttons = document.querySelectorAll('button');
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].disabled = false;
-        buttons[i].className = '';
-    }// Replenish Hearts
-    for (let i = 0; i < hearts.length; i++) {
-        hearts[i].innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px">';    
-    }
-        //Add new phrase as li items to screen
-        addPhraseToDisplay(phraseArray);
-}
+
