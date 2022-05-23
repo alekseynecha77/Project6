@@ -80,49 +80,60 @@ return match
 
 
     
-     function reloadGame(){
-         btnReset.addEventListener('click', (e) =>{
-             ul.style.display = 'none';
-            location.reload();
+    
             
-       
-
-         });
-
-    }
-
-    function restartGame(){
-        const restartButton = document.querySelector('.restart');
-
-       restartButton.addEventListener('click', (e) => {
-
-        window.location.reload();
-        return false;
-
-    });
-    }
     
     function checkWin (){
         const letter = document.querySelectorAll('.letter');
         const show = document.querySelectorAll('.show');
         let title = document.querySelector('.title');
         if(letter.length === show.length){
-            ovlerlay.className = 'win';
-            title.textContent = 'wow you won, you probably have big IQ';
-            overlay.style.display ='flex';
-            btnReset.style.display = 'none';
+            disableButtons();
+        setTimeout(function () {    
+            overlay.className = 'win';
+            overlay.style.display = 'flex';
+            title.innerHTML = 'YOU WIN!';
+            startGame.innerHTML = 'Replay?';
+        }, 800);
 
+    } else if(missed > 4){
+            disableButtons();
+            setTimeout(function () {
+                overlay.className = 'lose';
+                overlay.style.display = 'flex';
+                title.innerHTML = 'YOU LOSE!';
+                start.innerHTML = 'Replay?';
+             }, 800);
         }
-        else if(missed > 4){
-            overlay.className = 'lose';
-            title.textContent = 'oops you lost';
-            overlay.style.display ='flex';
-            btnReset.style.display = 'none';
+    }
 
-        }
-                reloadGame();
-                restartGame();
+    
+function disableButtons () {
+    let buttons = document.querySelectorAll('button');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+}
 
-            }
-
-
+// RESET GAME after win or loss
+function resetGame () {
+    missed = 0;
+    phraseArray = ''; /*Removing the previous phrase*/
+    phraseArray = getRandomPhraseAsArray(phrases); /*Choosing a new phrase*/
+    // Remove list items of the last phrase from display
+    const removeLi = document.querySelectorAll('ul li');
+    for (let i = 0; i < removeLi.length; i++) {
+        removeLi[i].remove();
+    }
+    // Reset all buttons
+    let buttons = document.querySelectorAll('button');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+        buttons[i].className = '';
+    }// Replenish Hearts
+    for (let i = 0; i < hearts.length; i++) {
+        hearts[i].innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px">';    
+    }
+        //Add new phrase as li items to screen
+        addPhraseToDisplay(phraseArray);
+}
