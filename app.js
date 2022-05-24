@@ -79,7 +79,7 @@ function checkLetter(button) {
 
 function resetGame() {
   const buttons = document.getElementsByTagName("button");
-  const li = document.querySelectorAll("ul li");
+  const li = document.querySelectorAll("ul");
   overlay.className = "start";
   li.innerHTML = " ";
   missed = 0;
