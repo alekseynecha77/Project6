@@ -89,7 +89,7 @@ function resetGame() {
     tries[i].firstElementChild.src = "images/liveHeart.png";
   }
 
-  /* RESETS LI */
+  /* RESETS LI */ 
   for (let i = 0; i < li.length; i++) {
     li[i].className = "";
     li[i].textContent = "";
